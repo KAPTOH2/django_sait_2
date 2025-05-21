@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    {% endblock %} 
+    <style>
+        .image-wrapper {
+            width: 100%; 
+            height: auto; 
+        }
+
+        .image-wrapper img {
+            width: 100%; 
+            display: block; 
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 0; 
+            padding: 0; 
+        }
+
+        .header {
+            background-color: #000; 
+            padding: 10px;
+            display: flex;
+            justify-content: space-around; 
+        }
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Helvetica';
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 18px;
+        }
+
+        .content {
+            padding: 20px;
+            border: 1px solid #000; 
+            
+        }
+
+        .main {
+            padding: 20px;
+            font-size: 18px;
+        }
+        .main a {
+            color: #000;
+
+        }
+        
+        .topchik {
+            color: red;
+            padding: 20px;
+            line-height: 8
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-wrapper">
+        <a href="https://en.wikipedia.org/wiki/Brooklyn_Bridge"><img src="{% static 'sait_1/images/head.jpg' %}" ></a>
+      </div>
+
+    <div class="header">
+        <a href={% url 'home' %}>Главная страница</a>
+        <a href={% url 'razdel_1' %}>Раздел 1</a>
+        <a href={% url 'massiv' %}>Массив</a>
+        <a href={% url 'student_grades' %}>Осн. задача</a>
+        <a href={% url 'zadacha' A=1 H=2 R=3 M=4 %}>Доп. задача</a>
+        <a href="https://ru.wikipedia.org/" target="_blank">Википедия</a>
+        <a href={% url 'abc_model_form' %}>Форма</a>
+        <a href={% url 'abc_result' %}>Результат</a>
+        <a href={% url 'table' %}>Таблица</a>
+        {% for page in pages %}
+            <a href="{{ page.get_absolute_url }}">{{ page.item_nav }}</a>
+        {% endfor %}
+    </div>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <div class="main">
+      {% block main %}
+      {% endblock %}
+    </div>
+
+    </div>
+    <a href="#top" class="topchik">Наверх</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %} <h1>Форма</h1> {% endblock %}
+
+{% block main %}
+    <form action="{% url 'abc_model_form' %}"" method="POST">
+        {% csrf_token %}
+
+        <div style="margin-bottom: 10px;">
+            <label for="{{ form.task.id_for_label }}">Фамилия:</label><br>
+            {{ form.task }}
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="{{ form.a.id_for_label }}">Образовательная программа:</label><br>
+            {{ form.a }}
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="{{ form.b.id_for_label }}">Курс:</label><br>
+            {{ form.b }}
+            <small style="color: gray;">{{ form.b.help_text }}</small>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="{{ form.c.id_for_label }}">ВУЗ:</label><br>
+            {{ form.c }}
+        </div>
+
+
+        <label for="id_submit">&nbsp;</label>
+        <button type="submit" id="id_submit">Отправить</button>
+        </label>
+    </form>
+{% endblock %}

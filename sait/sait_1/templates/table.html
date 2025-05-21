@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  <title> Дополнительная задача </title>
+{% endblock %}
+
+{% block content %}
+    <h1>Таблица запросов формы</h1>
+{% endblock %}
+
+{% block main %}
+    <h4>Таблица по-умолчанию</h4>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-light">
+                <tr>
+                    {% for name in name_list %}
+                        <th>{{ name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for object in objects_values %}
+                    <tr>
+                        {% for key, value in object.items %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <h4>Таблица после фильтрации и сортировки</h4>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-light">
+                <tr>
+                    {% for name in verbose_name_list %}
+                        <th>{{ name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for objects_values in objects_values_list %}
+                    <tr>
+                        {% for item in objects_values %}
+                            <td>{{ item }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <h4>Статистика по полю "Курс"</h4>
+    <table class="table table-bordered table-sm">
+        <thead class="thead-light">
+            <tr>
+                <th>Статистика</th>
+                <th>Значение</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Количество</td>
+                <td>{{ statics.statics_val.0.b__count }}</td>
+            </tr>
+            <tr>
+                <td>Среднее</td>
+                <td>{{ statics.statics_val.1.b__avg }}</td>
+            </tr>
+            <tr>
+                <td>Минимум</td>
+                <td>{{ statics.statics_val.2.b__min }}</td>
+            </tr>
+            <tr>
+                <td>Максимум</td>
+                <td>{{ statics.statics_val.3.b__max }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

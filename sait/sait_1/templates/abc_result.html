@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title> Дополнительная задача </title>
+{% endblock %}
+
+{% block content %}
+    <h1>Результат</h1>
+{% endblock %}
+
+{% block main %}
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Программа</th>
+            <th scope="col">Курс</th>
+            <th scope="col">ВУЗ</th>
+        </tr>
+        </thead>
+        <tbody style="border-top: 0px;">
+
+
+        <tr>
+            {% for item in last_values %}
+                <td>{{ item }}</td>
+            {% endfor %}
+            <td>{{ result }}</td>
+        </tr>
+
+        </tbody>
+    </table>
+{% load static %}
+{% endblock %}

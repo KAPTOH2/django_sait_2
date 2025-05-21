@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title> Моя домашняя страница </title>
+{% endblock %}
+{% load static %}
+
+{% block content %}
+    <a href="#main" class="topchik">К приветствию</a>
+    <h1>Главная страница</h1>
+    <p><img src="{% static img %}" style="width: 300px;"></p>
+    <p>Создатель: {{name}}</p>
+    <p>Телефон: {{phone}}</p>
+    <p>Почта: {{email}}</p>
+    <p>Группа: {{group}}</p>
+    <p>Предподаватель: {{prepod}}</p>
+    <h4>Мои сокурсники</h4>
+    <p><img src="{% static img_1 %}" style="width: 300px;"></p>
+    <p>Одногруппник: {{name_1}}</p>
+    <p>Телефон: {{phone_1}}</p>
+    <p>Почта: {{email_1}}</p>
+    <p>Группа: {{group}}</p>
+
+
+
+{% endblock %}
+
+{% block main %}
+  <a id="main"></a>
+  <h2>Добро пожаловать!</h2>
+  <p>Это главная страница моего замечательного веб-сайта.</p>
+  <li><a href="https://github.com/vmarshirov">Ссылка на гетхаб Марширова В.В.</a></li>
+  <li><a href="https://github.com/evshadrina">Ссылка на гетхаб Шадриной Е.В.</a></li>
+  <p>
+    Текущее время: {{ now }}
+  </p>
+  <p>
+    <li><a href={% url 'zadacha' A=1 H=2 R=3 M=4 %}>К дополнительной задаче</a></li>
+  </p>
+  <p>
+    <li><a href={% url 'h'  %}>К корню сайта</a></li>
+  </p>
+
+{% endblock %}

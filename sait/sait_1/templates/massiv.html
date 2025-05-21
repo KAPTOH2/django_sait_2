@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Магазин</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Магазин</h1>
+{% endblock %}
+
+{% block main %}
+    {% load static %}
+
+    <div class="container">
+        {% for object in dict_of_array.objects_array %}
+            <div class="card m-2" style="width: 20rem; border: 2px solid #000; border-radius: 5px; padding: 10px;">
+                {% if object.img|slice:":4" == "http" %}
+                    <img src="{{ object.img }}" style="width: 300px;">
+                {% else %}
+                    <img src="{% static object.img %}" style="width: 300px;">
+                {% endif %}
+                <div class="card-body">
+                    <h4 class="card-title">{{object.title}}</h4>
+                    <p class="card-text">{{ object.description }}. Цена: {{ object.price }}р.</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
